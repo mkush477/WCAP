@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S.M. Krishna Ward — Ward Information Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0B7B6B;--teal-l:#13A898;--teal-bg:#E6F5F2;
+  --amber:#D97706;--amb-bg:#FEF3C7;
+  --red:#DC2626;--red-bg:#FEE2E2;
+  --green:#16A34A;--grn-bg:#DCFCE7;
+  --dark:#0F1F2D;--mid:#3D5A6C;--gray:#6B7280;
+  --line:#E5E7EB;--bg:#F8FAFC;--white:#FFFFFF;
+  --purple:#7C3AED;--pur-bg:#EDE9FE;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);line-height:1.6;font-size:13.5px}
+@media print{body{background:white}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* HEADER */
+.pg-hdr{background:var(--dark);padding:28px 44px 0;position:relative;overflow:hidden}
+.pg-hdr::before{content:'';position:absolute;right:-100px;top:-100px;width:380px;height:380px;border-radius:50%;background:var(--teal);opacity:.08}
+.hdr-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+.kicker{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2.5px;color:var(--teal-l);margin-bottom:5px}
+.ward-name{font-family:'DM Serif Display',serif;font-size:44px;line-height:1;color:#fff;letter-spacing:-.5px}
+.ward-sub{font-size:13px;color:#8AACBB;margin-top:5px}
+.hdr-right{text-align:right;flex-shrink:0}
+.election-badge{display:inline-block;background:var(--amber);color:#fff;font-size:9px;font-weight:700;letter-spacing:1.5px;padding:4px 11px;border-radius:2px;margin-bottom:8px}
+.hdr-right p{font-size:11px;color:#8AACBB;line-height:2}
+.hdr-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin-top:24px;background:rgba(255,255,255,.07);border-radius:4px 4px 0 0;overflow:hidden}
+.hs{padding:13px 16px;background:rgba(255,255,255,.04)}
+.hs .n{font-family:'DM Serif Display',serif;font-size:28px;color:var(--teal-l);line-height:1}
+.hs .l{font-size:10px;color:#8AACBB;margin-top:2px}
+
+/* BANDS */
+.band-election{background:var(--amber);color:#fff;padding:11px 44px;font-size:12px;font-weight:500;display:flex;align-items:center;gap:12px}
+.band-election strong{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1.5px;background:rgba(0,0,0,.18);padding:2px 8px;border-radius:2px;flex-shrink:0}
+.band-gba{background:var(--dark);display:grid;grid-template-columns:repeat(4,1fr);gap:1px}
+.bg-cell{padding:9px 16px;background:#0d1f2d;border-right:1px solid rgba(255,255,255,.06)}
+.bg-cell:last-child{border:none}
+.bg-cell .bl{font-size:8.5px;font-family:'Space Mono',monospace;letter-spacing:1px;color:#5A7888;margin-bottom:2px}
+.bg-cell .bv{font-size:11.5px;font-weight:600;color:var(--teal-l)}
+
+/* HOW TO USE — top banner */
+.how-band{background:var(--teal);padding:0}
+.how-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
+.how-col{padding:16px 20px;border-right:1px solid rgba(255,255,255,.15)}
+.how-col:last-child{border:none}
+.how-label{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:1.5px;color:rgba(255,255,255,.6);margin-bottom:5px}
+.how-text{font-size:12px;color:#fff;line-height:1.6}
+
+/* MAIN LAYOUT */
+.main{padding:22px 44px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.full{grid-column:1/-1}
+
+/* SECTION TITLES */
+.sec-title{font-size:10px;font-family:'Space Mono',monospace;font-weight:700;letter-spacing:2px;color:var(--gray);text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+
+/* CARDS */
+.card{background:var(--white);border-radius:8px;border:1px solid var(--line);overflow:hidden}
+.card-head{padding:11px 16px;display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--line)}
+.card-head .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.card-head h3{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--mid)}
+.card-head .tag{margin-left:auto;font-size:8.5px;font-family:'Space Mono',monospace;padding:2px 7px;border-radius:2px;flex-shrink:0;font-weight:700}
+.tag-ok{background:var(--teal-bg);color:var(--teal)}
+.tag-gap{background:var(--red-bg);color:var(--red)}
+.tag-warn{background:var(--amb-bg);color:var(--amber)}
+.tag-na{background:#F3F4F6;color:var(--gray)}
+.cb{padding:14px 16px}
+
+/* INDICATORS */
+.ind{display:flex;align-items:flex-start;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);gap:10px}
+.ind:last-child{border:none}
+.il{flex:1}
+.in{font-size:12.5px;font-weight:500;color:var(--dark)}
+.id{font-size:11px;color:var(--gray);margin-top:1px;line-height:1.45}
+.bench-line{font-size:10.5px;color:var(--mid);margin-top:3px;font-style:italic}
+.bw{display:flex;align-items:center;gap:7px;margin-top:4px}
+.bt{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.bf{height:100%;border-radius:3px}
+.bm{font-size:9.5px;color:var(--gray)}
+.ir{text-align:right;flex-shrink:0;padding-top:2px}
+.iv{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;line-height:1}
+.ib{font-size:10px;color:var(--gray);margin-top:2px}
+.good{color:var(--teal)}.warn{color:var(--amber)}.bad{color:var(--red)}.neu{color:var(--mid)}
+
+/* ALERTS */
+.alert{padding:10px 13px;border-radius:6px;margin-top:10px;font-size:12px;line-height:1.5}
+.alert-red{background:var(--red-bg);border-left:3px solid var(--red);color:#991B1B}
+.alert-amber{background:var(--amb-bg);border-left:3px solid var(--amber);color:#92400E}
+.alert-teal{background:var(--teal-bg);border-left:3px solid var(--teal);color:#065F46}
+.alert-purple{background:var(--pur-bg);border-left:3px solid var(--purple);color:#5B21B6}
+
+/* SCHOOLS */
+.school-item{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}
+.school-item:last-child{border:none}
+.sn{font-size:12px;color:var(--dark)}
+.st{font-size:9.5px;padding:2px 8px;border-radius:2px;font-weight:600;flex-shrink:0}
+.sg{background:var(--teal-bg);color:var(--teal)}
+.sp{background:#F3F4F6;color:var(--mid)}
+
+/* GAP GRID */
+.gg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gbox{padding:12px 13px;border-radius:6px}
+.gbox.r{background:var(--red-bg);border-left:3px solid var(--red)}
+.gbox.a{background:var(--amb-bg);border-left:3px solid var(--amber)}
+.gbox.g{background:var(--teal-bg);border-left:3px solid var(--teal)}
+.gnum{font-family:'DM Serif Display',serif;font-size:30px;line-height:1;color:var(--dark)}
+.glabel{font-size:11.5px;color:var(--mid);margin-top:3px;line-height:1.45}
+.gask{font-size:10.5px;font-style:italic;color:var(--gray);margin-top:7px;padding-top:7px;border-top:1px solid rgba(0,0,0,.08)}
+
+/* CMP */
+.cmp-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.cmp-item:last-child{border:none}
+.cnum{width:22px;height:22px;background:var(--teal);color:#fff;border-radius:50%;font-family:'Space Mono',monospace;font-size:9.5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ct strong{display:block;font-size:12.5px;color:var(--dark)}
+.ct span{font-size:11.5px;color:var(--gray);line-height:1.45}
+.csrc{margin-left:auto;font-size:8.5px;font-family:'Space Mono',monospace;color:var(--teal-l);background:var(--teal-bg);padding:2px 7px;border-radius:2px;flex-shrink:0;align-self:flex-start;margin-top:2px}
+
+/* QUESTIONS */
+.q-item{padding:9px 12px;background:var(--amb-bg);border-left:3px solid var(--amber);border-radius:2px;margin-bottom:8px;font-size:12.5px;color:var(--dark);font-style:italic;line-height:1.5}
+.q-item:last-child{margin-bottom:0}
+
+/* POLLING */
+.pb-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.pb-row:last-child{border:none}
+.pb-name{font-size:12px;color:var(--dark)}
+.pb-code{font-family:'Space Mono',monospace;font-size:10px;color:var(--teal)}
+.blank-field{display:inline-block;background:var(--line);height:14px;border-radius:2px;vertical-align:middle}
+
+/* POP TABLE */
+.infra-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.infra-row:last-child{border:none}
+.ir2{display:flex;gap:8px;align-items:center}
+.bullet{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* FOOTER */
+.footer{padding:14px 44px;background:var(--dark);color:#6A8898;font-size:10.5px;display:flex;justify-content:space-between;align-items:center}
+.footer strong{color:var(--teal-l)}
+.stamp{border:1.5px solid var(--teal-l);color:var(--teal-l);font-family:'Space Mono',monospace;font-size:9px;padding:3px 10px;border-radius:2px;letter-spacing:1px}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="pg-hdr">
+  <div class="hdr-inner">
+    <div>
+      <div class="kicker">WARD INFORMATION GUIDE · BENGALURU EAST · GBA 2026</div>
+      <div class="ward-name">S.M. Krishna Ward</div>
+      <div class="ward-sub">Ward No. 33 · Whitefield area · Assembly: Mahadevapura (174)</div>
+    </div>
+    <div class="hdr-right">
+      <div class="election-badge">GBA ELECTIONS · JUNE 2026</div>
+      <p>Area: 4.91 km²<br>Population (2011): 16,262<br>Corporation: Bengaluru East<br>Zone: Mahadevapura<br>Data: May 2026</p>
+    </div>
+  </div>
+  <div class="hdr-stats">
+    <div class="hs"><div class="n">15</div><div class="l">Schools in ward</div></div>
+    <div class="hs"><div class="n">9</div><div class="l">Parks &amp; playgrounds</div></div>
+    <div class="hs"><div class="n">8</div><div class="l">Water bodies</div></div>
+    <div class="hs"><div class="n">17</div><div class="l">BMTC bus stops</div></div>
+    <div class="hs"><div class="n">18</div><div class="l">Polling booths</div></div>
+  </div>
+</div>
+
+<!-- GBA BAND -->
+<div class="band-gba">
+  <div class="bg-cell"><div class="bl">GOVERNANCE</div><div class="bv">Greater Bengaluru Authority (GBA)</div></div>
+  <div class="bg-cell"><div class="bl">RO DIVISION</div><div class="bv">RO-Hoodi (Code 6)</div></div>
+  <div class="bg-cell"><div class="bl">ARO SUB-DIVISION</div><div class="bv">ARO-Kadugodi (Code 17)</div></div>
+  <div class="bg-cell"><div class="bl">DATA SOURCES</div><div class="bv">KGIS · GEE · GTFS · TomTom · KSPCB</div></div>
+</div>
+
+<!-- HOW TO USE — sharp, at top -->
+<div class="how-band">
+  <div style="padding:12px 44px 0;background:var(--teal)">
+    <span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.55);text-transform:uppercase">How to Use This Guide</span>
+  </div>
+  <div class="how-inner">
+    <div class="how-col">
+      <div class="how-label">BEFORE THE ELECTION</div>
+      <div class="how-text">Bring this to every civic jam and community meeting. Every number here is measured, not an opinion. Use the gaps and questions to hold candidates accountable before they get your vote.</div>
+    </div>
+    <div class="how-col">
+      <div class="how-label">DURING THE ELECTION</div>
+      <div class="how-text">Put the 6 questions to every candidate at every event. Share the ward comparison card on WhatsApp. 11 years without a councillor ends with this vote — make it count.</div>
+    </div>
+    <div class="how-col">
+      <div class="how-label">AFTER THE ELECTION</div>
+      <div class="how-text">This document becomes the baseline. Every indicator — parks, schools, flooding, air quality — will be measured again in Year 1 and Year 2. The gaps identified today become the report card of tomorrow.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- ABOUT THE WARD -->
+<div class="card full">
+  <div class="card-head"><div class="dot" style="background:var(--dark)"></div><h3>About S.M. Krishna Ward</h3></div>
+  <div class="cb" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+    <div>
+      <div class="sec-title">Population &amp; Area</div>
+      <div class="infra-row"><span style="font-size:12.5px;font-weight:500">Total population (2011)</span><span style="font-family:'Space Mono',monospace;font-size:14px;font-weight:700">16,262</span></div>
+      <div class="infra-row"><span style="font-size:12px;color:var(--gray)">Male</span><span style="font-size:12px;font-weight:500">8,867 (54.5%)</span></div>
+      <div class="infra-row"><span style="font-size:12px;color:var(--gray)">Female</span><span style="font-size:12px;font-weight:500">7,395 (45.5%)</span></div>
+      <div class="infra-row"><span style="font-size:12px;color:var(--gray)">Ward area</span><span style="font-size:12px;font-weight:500">4.91 km²</span></div>
+      <div class="infra-row"><span style="font-size:12px;color:var(--gray)">Population density</span><span style="font-size:12px;font-weight:500">~3,312 / km²</span></div>
+      <div class="alert alert-amber">2011 census population significantly underestimates current residents. GHSL 2030 projection data available — actual population is substantially higher due to IT corridor growth around ITPL and Whitefield.</div>
+    </div>
+    <div>
+      <div class="sec-title">Ward Identity &amp; Context</div>
+      <div class="infra-row"><span style="font-size:12px;color:var(--gray)">Ward number</span><span style="font-size:12px;font-weight:600">Ward 33</span></div>
+      <div class="infra-row"><span style="font-size:12px;color:var(--gray)">Assembly constituency</span><span style="font-size:12px;font-weight:600">Mahadevapura (174)</span></div>
+      <div class="infra-row"><span style="font-size:12px;color:var(--gray)">Corporation zone</span><span style="font-size:12px;font-weight:600">Mahadevapura Zone</span></div>
+      <div class="infra-row"><span style="font-size:12px;color:var(--gray)">RO / ARO</span><span style="font-size:12px;font-weight:600">Hoodi / Kadugodi</span></div>
+      <div class="infra-row"><span style="font-size:12px;color:var(--gray)">Key localities</span><span style="font-size:12px;font-weight:600;text-align:right">Nallurahalli · Vijayanagara<br>Pattandur Agrahara · ITPL</span></div>
+      <div class="infra-row"><span style="font-size:12px;color:var(--gray)">Nearest fire station</span><span style="font-size:12px;font-weight:600">Mahadevapura (35 staff)</span></div>
+      <div class="infra-row"><span style="font-size:12px;color:var(--gray)">Police stations in ward</span><span style="font-size:12px;font-weight:600;color:var(--red)">0</span></div>
+    </div>
+    <div>
+      <div class="sec-title">The Ward in Brief</div>
+      <p style="font-size:12.5px;color:var(--mid);line-height:1.7">S.M. Krishna Ward sits at the heart of Bengaluru's IT corridor — bounded by ITPL, Whitefield TTMC, and the Purple Line metro. It is a ward of stark contrasts: world-class tech infrastructure alongside absent public parks, good bus connectivity but severe congestion (60.6% congestion, avg speed 17.6 kmph), and a rapidly warming urban environment (UHI hotspot coverage jumped from 15% in 2015 to 56% in 2025).</p>
+      <div class="alert alert-teal">This is the first GBA election since 2015 — an 11-year accountability gap. The new councillor inherits both the growth dividend and the infrastructure deficit of one of Bengaluru's fastest-changing wards.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILITY -->
+<div class="card">
+  <div class="card-head"><div class="dot" style="background:var(--teal)"></div><h3>Mobility &amp; Transport</h3><span class="tag tag-warn">MIXED PICTURE</span></div>
+  <div class="cb">
+    <div class="ind">
+      <div class="il">
+        <div class="in">BMTC bus stop coverage</div>
+        <div class="id">17 stops (KGIS) · 92.87% of ward within 15-min walk</div>
+        <div class="bench-line">Indian benchmark: within 800m (UTTIPEC) · WHO: 95% within 15-min walk</div>
+        <div class="bw"><div class="bt"><div class="bf good" style="width:93%;background:var(--teal)"></div></div><span class="bm">benchmark 80%</span></div>
+      </div>
+      <div class="ir"><div class="iv good">92.9%</div><div class="ib">✓ Above standard</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">BMTC frequent service coverage (7–10am)</div>
+        <div class="id">20 stops with frequent service · 3.52 km² covered · 71.7% of ward</div>
+        <div class="bench-line">High-frequency routes only — meaningful for peak hour commuters</div>
+        <div class="bw"><div class="bt"><div class="bf warn" style="width:72%;background:var(--amber)"></div></div><span class="bm">benchmark 80%</span></div>
+      </div>
+      <div class="ir"><div class="iv warn">71.7%</div><div class="ib">Partial coverage</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Metro coverage (15-min walk)</div>
+        <div class="id">3 stations in ward (Phase 2 Purple Line): Channasandra · Pattandur Agrahara · Sri Sathya Sai Hospital</div>
+        <div class="bench-line">Indian benchmark: within 800m · WHO 15-min city standard: 50%+</div>
+        <div class="bw"><div class="bt"><div class="bf warn" style="width:46%;background:var(--amber)"></div></div><span class="bm">benchmark 50%</span></div>
+      </div>
+      <div class="ir"><div class="iv warn">46.4%</div><div class="ib">⚠ Near benchmark</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Road network</div>
+        <div class="id">Arterial: 4.83 km · Sub-arterial: 3.90 km · Collector: 2.59 km · Local: 67.23 km · Total: 78.55 km</div>
+        <div class="bench-line">Local roads dominate (85.6%) — arterial connectivity is limited for a ward of this density</div>
+      </div>
+      <div class="ir"><div class="iv neu">78.6 km</div><div class="ib">Total roads</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Traffic congestion (TomTom, Aug 2024)</div>
+        <div class="id">Congestion: 60.6% · Avg speed: 17.6 kmph · Free-flow speed: 28.3 kmph · Travel time: 33.9 min per 10 km</div>
+        <div class="bench-line">Avg speed 37.8% below free-flow — severe peak-hour gridlock around ITPL</div>
+        <div class="bw"><div class="bt"><div class="bf bad" style="width:61%;background:var(--red)"></div></div><span class="bm">60.6% congestion</span></div>
+      </div>
+      <div class="ir"><div class="iv bad">17.6 kmph</div><div class="ib">Avg speed</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Footpaths, cycling infrastructure</div>
+        <div class="id">Data incomplete — significant gaps observed across ward; no shaded or continuous footpaths mapped</div>
+        <div class="bench-line">UTTIPEC: continuous, shaded footpaths mandatory on all arterial and sub-arterial roads</div>
+      </div>
+      <div class="ir"><div class="iv bad">?</div><div class="ib">Data gap</div></div>
+    </div>
+    <div class="alert alert-amber">Despite good bus coverage, 53.6% of the ward cannot reach the metro within 15 minutes on foot — and average traffic speed is under 18 kmph. Last-mile connectivity — shaded footpaths, feeder services, safe pedestrian infrastructure — is the critical missing piece.</div>
+  </div>
+</div>
+
+<!-- OPEN SPACE -->
+<div class="card">
+  <div class="card-head"><div class="dot" style="background:var(--red)"></div><h3>Open Space &amp; Recreation</h3><span class="tag tag-gap">CRITICAL GAP</span></div>
+  <div class="cb">
+    <div class="ind">
+      <div class="il">
+        <div class="in">Parks — total area</div>
+        <div class="id">6 mapped · 0.04 km² (4 ha) · BUT most are institutional grounds — Sathya Sai Hospital campus, ITPL parking lot — not freely public</div>
+        <div class="bench-line">MoEF: 10–15% of urban area · WHO 2016: 9 m² per person minimum</div>
+        <div class="bw"><div class="bt"><div class="bf bad" style="width:8%;background:var(--red)"></div></div><span class="bm">target: 10–15% of ward</span></div>
+      </div>
+      <div class="ir"><div class="iv bad">0.82%</div><div class="ib">of ward area</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Playgrounds — total area</div>
+        <div class="id">3 mapped · 0.02 km² (2 ha) · St. Joseph's Convent, Volleyball Court, ITPB Cricket Ground — all institutional or private</div>
+        <div class="bench-line">Should be within local schools and residential areas (UTTIPEC)</div>
+      </div>
+      <div class="ir"><div class="iv warn">0.41%</div><div class="ib">Not public</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Combined parks + playgrounds</div>
+        <div class="id">Total area 0.06 km² = 6 ha · 1.22% of ward</div>
+        <div class="bench-line">WHO: 9 m²/person · India avg: ~2 m²/person (already critically low nationally)</div>
+        <div class="bw"><div class="bt"><div class="bf bad" style="width:12%;background:var(--red)"></div></div><span class="bm">WHO benchmark: 9 m²/person</span></div>
+      </div>
+      <div class="ir"><div class="iv bad">3.69 m²</div><div class="ib">per person</div></div>
+    </div>
+    <div class="alert alert-red">⚠ Critical finding: All 9 mapped open spaces are institutional or private — hospital campus, IT park, school grounds. Effective freely accessible public green space in this ward is likely near zero. At 3.69 m²/person (2011 pop), the ward is already below WHO's 9 m² standard — with a much larger current population, the real figure is far worse.</div>
+  </div>
+</div>
+
+<!-- WATER & FLOODING -->
+<div class="card">
+  <div class="card-head"><div class="dot" style="background:var(--purple)"></div><h3>Water Bodies &amp; Flood Risk</h3><span class="tag tag-warn">WATCH</span></div>
+  <div class="cb">
+    <div class="ind">
+      <div class="il">
+        <div class="in">Tanks (large water bodies)</div>
+        <div class="id">2 tanks · combined area: 0.15 km² = 15 ha · 3.05% of ward</div>
+        <div class="bench-line">Blue infrastructure must be protected from encroachment — no national minimum, but loss is irreversible</div>
+      </div>
+      <div class="ir"><div class="iv neu">2 tanks</div><div class="ib">3.05% of ward</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Ponds (smaller water bodies)</div>
+        <div class="id">6 ponds · area: 0.01 km² = 1 ha · 0.20% of ward · under development pressure</div>
+      </div>
+      <div class="ir"><div class="iv warn">6 ponds</div><div class="ib">0.20% of ward</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Flooding vulnerable location</div>
+        <div class="id">1 confirmed location: Pattandur Agrahara near ITPL / Nallurahalli Lake · recurring monsoon flood zone</div>
+        <div class="bench-line">GBA is conducting pre-monsoon drone surveys — this location must be on the list</div>
+      </div>
+      <div class="ir"><div class="iv bad">1 spot</div><div class="ib">Pattandur Agrahara</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Stormwater drain network</div>
+        <div class="id">Primary: 0.89 km · Secondary: 1.45 km · Tertiary: 7.46 km · Total density: 2.00 km/km²</div>
+        <div class="bench-line">Network density is low for a ward of this scale — significant portions are uncovered</div>
+      </div>
+      <div class="ir"><div class="iv warn">9.80 km</div><div class="ib">total drains</div></div>
+    </div>
+    <div class="alert alert-red">The Pattandur Agrahara–Nallurahalli Lake area floods recurrently every monsoon. With tank and pond areas covering 3.25% of the ward and a fragmented drain network, the ward is structurally vulnerable to urban flooding.</div>
+  </div>
+</div>
+
+<!-- SCHOOLS -->
+<div class="card">
+  <div class="card-head"><div class="dot" style="background:var(--teal)"></div><h3>Schools &amp; Education</h3><span class="tag tag-ok">NEAR BENCHMARK</span></div>
+  <div class="cb">
+    <div class="ind">
+      <div class="il">
+        <div class="in">School access (15-min walk)</div>
+        <div class="id">83.1% of ward area within 15-min walk of a school</div>
+        <div class="bench-line">RTE Act 2009: Grade 1–5 within 1 km · WHO 15-min city standard: 90%+</div>
+        <div class="bw"><div class="bt"><div class="bf warn" style="width:83%;background:var(--amber)"></div></div><span class="bm">benchmark 90%</span></div>
+      </div>
+      <div class="ir"><div class="iv warn">83.1%</div><div class="ib">Near standard</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Gap — area without school access</div>
+        <div class="id">16.9% of ward has no school within 15-min walk — likely concentrated in outer sections</div>
+      </div>
+      <div class="ir"><div class="iv warn">16.9%</div><div class="ib">Uncovered</div></div>
+    </div>
+    <div style="margin:10px 0 8px;font-size:10px;font-weight:700;letter-spacing:.5px;color:var(--gray)">15 SCHOOLS IN WARD — 4 GOVERNMENT, 11 PRIVATE</div>
+    <div class="school-item"><span class="sn">GHPS Nallurahalli</span><span class="st sg">GOVT · Primary+</span></div>
+    <div class="school-item"><span class="sn">GLPS Vijayanagara</span><span class="st sg">GOVT · Primary</span></div>
+    <div class="school-item"><span class="sn">GLPS Ambedkar Nagara</span><span class="st sg">GOVT · Primary</span></div>
+    <div class="school-item"><span class="sn">GLPS Pattandur Agrahara</span><span class="st sg">GOVT · Primary</span></div>
+    <div class="school-item"><span class="sn">National Public School ITPL</span><span class="st sp">Private · Secondary+</span></div>
+    <div class="school-item"><span class="sn">Holy Cross School</span><span class="st sp">Private · Secondary+</span></div>
+    <div class="school-item"><span class="sn">Vydehi School of Excellence</span><span class="st sp">Private · Secondary+</span></div>
+    <div class="school-item"><span class="sn">Whitefield Global (Channasandra Rd)</span><span class="st sp">Private · Secondary+</span></div>
+    <div class="school-item"><span class="sn">Saint Joseph KH/EHPS Whitefield</span><span class="st sp">Private · Primary+</span></div>
+    <div class="school-item"><span class="sn">+ 6 more private schools</span><span class="st sp">Various categories</span></div>
+    <div class="alert alert-amber">All 4 government schools are primary level only — there is no government secondary school in the ward. Government secondary education is absent for families who cannot afford private schools.</div>
+  </div>
+</div>
+
+<!-- ANGANWADI & CIVIC -->
+<div class="card">
+  <div class="card-head"><div class="dot" style="background:var(--mid)"></div><h3>Social &amp; Civic Infrastructure</h3><span class="tag tag-na">PARTIAL DATA</span></div>
+  <div class="cb">
+    <div class="ind">
+      <div class="il">
+        <div class="in">Anganwadis (ICDS centres)</div>
+        <div class="id">4 anganwadis in ward · 71.3% of ward area within 15-min walk</div>
+        <div class="bench-line">ICDS: 1 anganwadi per 1,000 population — 4 centres serves ~4,000; ward population needs at least 16</div>
+        <div class="bw"><div class="bt"><div class="bf warn" style="width:71%;background:var(--amber)"></div></div><span class="bm">benchmark 1 per 1,000 pop</span></div>
+      </div>
+      <div class="ir"><div class="iv warn">4</div><div class="ib">Significant gap</div></div>
+    </div>
+    <div class="ind">
+      <div class="il"><div class="in">Primary Health Centre</div><div class="id">1 PHC mapped in ward · no govt hospital · 1 private hospital</div><div class="bench-line">IPHS: 1 PHC per 30,000 urban population — 1 is grossly insufficient for current ward population</div></div>
+      <div class="ir"><div class="iv warn">1 PHC</div><div class="ib">Inadequate</div></div>
+    </div>
+    <div class="infra-row"><div class="ir2"><div class="bullet" style="background:var(--red)"></div><span style="font-size:12.5px">Police stations</span></div><span style="font-size:12px;color:var(--red);font-weight:600">0 — nearest is outside ward</span></div>
+    <div class="infra-row"><div class="ir2"><div class="bullet" style="background:var(--red)"></div><span style="font-size:12.5px">Fire stations</span></div><span style="font-size:12px;color:var(--red);font-weight:600">0 — nearest: Mahadevapura (35 staff)</span></div>
+    <div class="infra-row"><div class="ir2"><div class="bullet" style="background:var(--red)"></div><span style="font-size:12.5px">Public toilets</span></div><span style="font-size:12px;color:var(--red);font-weight:600">0 mapped</span></div>
+    <div class="infra-row"><div class="ir2"><div class="bullet" style="background:var(--gray)"></div><span style="font-size:12.5px">Water supply (24/7 coverage)</span></div><span style="font-size:12px;color:var(--amber);font-weight:600">No data — survey needed</span></div>
+    <div class="infra-row"><div class="ir2"><div class="bullet" style="background:var(--gray)"></div><span style="font-size:12.5px">Waste collection points</span></div><span style="font-size:12px;color:var(--amber);font-weight:600">No data — survey needed</span></div>
+    <div class="infra-row"><div class="ir2"><div class="bullet" style="background:var(--teal)"></div><span style="font-size:12.5px">Religious institutions</span></div><span style="font-size:12px;font-weight:600">26 mapped</span></div>
+  </div>
+</div>
+
+<!-- ENVIRONMENT -->
+<div class="card">
+  <div class="card-head"><div class="dot" style="background:var(--teal)"></div><h3>Environment &amp; Climate</h3><span class="tag tag-warn">DETERIORATING</span></div>
+  <div class="cb">
+    <div class="ind">
+      <div class="il">
+        <div class="in">Air Quality Index (AQI)</div>
+        <div class="id">Average AQI in ward: 58.60 · Source: CPCB/KSPCB stations</div>
+        <div class="bench-line">CPCB: 0–100 = Satisfactory · No dedicated station inside the ward</div>
+        <div class="bw"><div class="bt"><div class="bf good" style="width:59%;background:var(--teal)"></div></div><span class="bm">satisfactory: &lt;100</span></div>
+      </div>
+      <div class="ir"><div class="iv good">58.6</div><div class="ib">Satisfactory</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Noise pollution — daytime</div>
+        <div class="id">Average daytime noise level: 58.62 dB · Source: KSPCB</div>
+        <div class="bench-line">CPCB residential zone limit: 55 dB daytime · This ward is above that limit</div>
+        <div class="bw"><div class="bt"><div class="bf warn" style="width:70%;background:var(--amber)"></div></div><span class="bm">limit: 55 dB (residential)</span></div>
+      </div>
+      <div class="ir"><div class="iv warn">58.6 dB</div><div class="ib">Above limit</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Noise pollution — nighttime</div>
+        <div class="id">Average night noise level: 54.64 dB · Source: KSPCB</div>
+        <div class="bench-line">CPCB residential zone limit: 45 dB nighttime · Ward is significantly above limit</div>
+        <div class="bw"><div class="bt"><div class="bf bad" style="width:80%;background:var(--red)"></div></div><span class="bm">limit: 45 dB (nighttime)</span></div>
+      </div>
+      <div class="ir"><div class="iv bad">54.6 dB</div><div class="ib">21% above limit</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Urban Heat Island — hotspot coverage</div>
+        <div class="id">2015: 15.29% of ward was UHI hotspot · 2025: 56.14% — a near 4× increase in 10 years</div>
+        <div class="bench-line">Mean surface temp rose from 36.46°C (2015) to 38.16°C (2025) — a 1.7°C increase in a decade</div>
+        <div class="bw"><div class="bt"><div class="bf bad" style="width:56%;background:var(--red)"></div></div><span class="bm">56% of ward is now a heat hotspot</span></div>
+      </div>
+      <div class="ir"><div class="iv bad">56.1%</div><div class="ib">↑ from 15% in 2015</div></div>
+    </div>
+    <div class="ind">
+      <div class="il">
+        <div class="in">Green cover change (since 2015)</div>
+        <div class="id">Net loss of green cover documented via satellite (GEE / Landsat) — tree canopy significantly reduced by built-up expansion</div>
+        <div class="bench-line">Each hectare of tree canopy lost adds approximately 1.5–2°C to local surface temperature</div>
+      </div>
+      <div class="ir"><div class="iv bad">↓ Net loss</div><div class="ib">10-yr trend</div></div>
+    </div>
+    <div class="alert alert-red">The ward is overheating. UHI hotspot coverage has nearly quadrupled in 10 years. The absence of public parks, loss of green cover, and dense built-up expansion are the direct causes. This is no longer a long-term risk — it is the present condition.</div>
+  </div>
+</div>
+
+<!-- CRITICAL GAPS -->
+<div class="card full">
+  <div class="card-head"><div class="dot" style="background:var(--red)"></div><h3>Critical Gaps — What This Ward Is Missing</h3></div>
+  <div class="cb">
+    <div class="gg">
+      <div class="gbox r">
+        <div class="gnum">0</div>
+        <div class="glabel">Freely accessible public parks — all 9 mapped open spaces are institutional or private grounds (hospital, IT park, school). Effective public green space is near zero.</div>
+        <div class="gask">"Will you identify and develop at least one genuinely public park on available government land — with a committed timeline?"</div>
+      </div>
+      <div class="gbox r">
+        <div class="gnum">56%</div>
+        <div class="glabel">Of the ward is now an Urban Heat Island hotspot — up from 15% in 2015. Nighttime noise is 21% above CPCB residential limits. No green cover plan in sight.</div>
+        <div class="gask">"What is your plan to address the ward's heat emergency — tree planting, park creation, and building setback enforcement?"</div>
+      </div>
+      <div class="gbox a">
+        <div class="gnum">1</div>
+        <div class="glabel">Confirmed flood-vulnerable location (Pattandur Agrahara near ITPL) with no published ward-level drainage or monsoon preparedness plan</div>
+        <div class="gask">"Will you ensure this ward's flood spot is in the GBA monsoon plan — with drain desilting, budget, and a pre-monsoon deadline?"</div>
+      </div>
+      <div class="gbox a">
+        <div class="gnum">0</div>
+        <div class="glabel">Government secondary schools in the ward — all 4 govt schools are primary only, leaving families dependent on expensive private schools for secondary education</div>
+        <div class="gask">"Will you advocate for upgrading GHPS Nallurahalli to include secondary classes — or for a new government secondary school?"</div>
+      </div>
+      <div class="gbox a">
+        <div class="gnum">0</div>
+        <div class="glabel">Police stations, fire stations, or public toilets within ward boundaries — basic civic infrastructure is absent despite rapid population growth</div>
+        <div class="gask">"What is your plan to bring a police outpost, public toilets, and emergency infrastructure to this ward in your term?"</div>
+      </div>
+      <div class="gbox r">
+        <div class="gnum">11</div>
+        <div class="glabel">Years without a ward councillor — ward fund utilisation, maintenance, and civic representation have all been absent since 2015</div>
+        <div class="gask">"What is your 100-day plan — and will you commit to publishing ward fund allocation and spend quarterly, in Kannada and English?"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CMP PRIORITIES -->
+<div class="card">
+  <div class="card-head"><div class="dot" style="background:var(--amber)"></div><h3>Common Minimum Programme — Suggested Priorities</h3></div>
+  <div class="cb">
+    <ul style="list-style:none">
+      <li class="cmp-item">
+        <div class="cnum">1</div>
+        <div class="ct"><strong>Create one genuinely public park on available government land</strong><span>Ward has 0 public open space — the single most impactful change possible. Identify a govt parcel, develop it as a free-access community park, commit to it publicly before election day.</span></div>
+        <div class="csrc">LAND + OPEN SPACE</div>
+      </li>
+      <li class="cmp-item">
+        <div class="cnum">2</div>
+        <div class="ct"><strong>Pre-monsoon drainage plan for Pattandur Agrahara flood zone</strong><span>GBA is now doing pre-monsoon drone surveys. Demand the ward's flood spot is on the list with a published drainage remediation plan, budget, and timeline — before every monsoon.</span></div>
+        <div class="csrc">DRAINAGE + GBA</div>
+      </li>
+      <li class="cmp-item">
+        <div class="cnum">3</div>
+        <div class="ct"><strong>Shaded footpaths along metro approach roads</strong><span>53.6% of the ward can't walk to the metro. Shaded, continuous footpaths along approach roads to Pattandur Agrahara and Channasandra stations — backed by UTTIPEC standards — are fundable and achievable in Year 1.</span></div>
+        <div class="csrc">TRANSPORT + WALKABILITY</div>
+      </li>
+      <li class="cmp-item">
+        <div class="cnum">4</div>
+        <div class="ct"><strong>Green cover restoration — 1,000 trees in 2 years</strong><span>UHI hotspot coverage has gone from 15% to 56% in a decade. A ward-level tree planting programme — 500 roadside + 500 in institutional spaces — is a measurable, trackable commitment tied to the heat data.</span></div>
+        <div class="csrc">ENVIRONMENT + UHI</div>
+      </li>
+      <li class="cmp-item">
+        <div class="cnum">5</div>
+        <div class="ct"><strong>Govt secondary schooling and anganwadi expansion</strong><span>All 4 govt schools are primary. With only 4 anganwadis for a population of 16,262+, ICDS coverage is critical. Advocate for upgrading GHPS Nallurahalli and adding at least 4 new anganwadi centres.</span></div>
+        <div class="csrc">EDUCATION + HEALTH</div>
+      </li>
+      <li class="cmp-item">
+        <div class="cnum">6</div>
+        <div class="ct"><strong>Ward fund transparency — quarterly public disclosure</strong><span>After 11 years without a councillor, residents have had no visibility into ward budgets. A quarterly public release of fund allocation and spend — in Kannada and English — is the minimum accountability standard.</span></div>
+        <div class="csrc">GOVERNANCE</div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- 6 QUESTIONS -->
+<div class="card">
+  <div class="card-head"><div class="dot" style="background:var(--amber)"></div><h3>6 Questions for Every Candidate</h3></div>
+  <div class="cb">
+    <div class="q-item">"This ward has no freely accessible public park — all mapped open spaces are hospital or IT park grounds. Which specific government land parcel will you develop as a community park, and by when?"</div>
+    <div class="q-item">"The Pattandur Agrahara–Nallurahalli Lake area floods every monsoon. Will you ensure it is in the GBA drain desilting plan — with a published budget and pre-monsoon deadline?"</div>
+    <div class="q-item">"UHI hotspot coverage in this ward went from 15% to 56% in 10 years. What is your concrete plan — tree planting, park creation, building setback enforcement — to reverse this?"</div>
+    <div class="q-item">"There are 0 government secondary schools in this ward. Will you push to upgrade GHPS Nallurahalli to include secondary classes — or establish a new government secondary school?"</div>
+    <div class="q-item">"There are 0 police stations, 0 fire stations, and 0 public toilets in this ward. What is your plan to bring basic civic infrastructure here in your first term?"</div>
+    <div class="q-item">"This is the first election in 11 years. Will you commit to publishing your ward fund allocation and spend every quarter — in Kannada and English — for your entire term?"</div>
+  </div>
+</div>
+
+<!-- POLLING -->
+<div class="card full">
+  <div class="card-head"><div class="dot" style="background:var(--purple)"></div><h3>Electoral Information — Polling Booths</h3><span class="tag" style="background:var(--pur-bg);color:var(--purple)">18 BOOTHS · MAHADEVAPURA ASSEMBLY</span></div>
+  <div class="cb" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div>
+      <div class="sec-title">Polling Stations</div>
+      <div class="pb-row"><span class="pb-name">Govt Higher Primary School, Nallurahalli</span><span class="pb-code">174-313 / 314 / 315 / 316 / 317</span></div>
+      <div class="pb-row"><span class="pb-name">Govt Lower Primary School, Vijayanagara</span><span class="pb-code">174-234 / 235 / 236</span></div>
+      <div class="pb-row"><span class="pb-name">Govt PS, Pattandur Agrahara (Ambedkar Nagara)</span><span class="pb-code">174-254 / 255 / 302 / 303 / 304</span></div>
+      <div class="pb-row"><span class="pb-name">St. Joseph Convent, Whitefield</span><span class="pb-code">174-256 / 257 / 258 / 259 / 260</span></div>
+      <div class="pb-row"><span class="pb-name">Glentree Academy, Nallurahalli</span><span class="pb-code">174-317</span></div>
+      <div class="alert alert-purple" style="margin-top:10px">74.75% of the ward area is within 15-min walk of a polling booth. All 18 booths are under Assembly Constituency Mahadevapura (174). Max 1,200 voters per booth (ECI revised norm).</div>
+    </div>
+    <div>
+      <div class="sec-title">Voter Data — To Be Updated from Electoral Roll</div>
+      <div class="pb-row"><span class="pb-name">Estimated registered voters</span><span style="font-size:12px;color:var(--amber);font-weight:600">14,567 – 21,851 (range)</span></div>
+      <div class="pb-row"><span class="pb-name">Voter turnout (GBA 2015)</span><span style="font-family:'Space Mono',monospace;font-size:12px"><span class="blank-field" style="width:90px"></span></span></div>
+      <div class="pb-row"><span class="pb-name">New voters (18–19 yrs, first-time)</span><span style="font-family:'Space Mono',monospace;font-size:12px"><span class="blank-field" style="width:90px"></span></span></div>
+      <div class="pb-row"><span class="pb-name">Voters with disability (PwD)</span><span style="font-family:'Space Mono',monospace;font-size:12px"><span class="blank-field" style="width:90px"></span></span></div>
+      <div class="pb-row"><span class="pb-name">Booth-level voter counts</span><span style="font-family:'Space Mono',monospace;font-size:12px"><span class="blank-field" style="width:90px"></span></span></div>
+      <div class="pb-row"><span class="pb-name">Women voter % by booth</span><span style="font-family:'Space Mono',monospace;font-size:12px"><span class="blank-field" style="width:90px"></span></span></div>
+      <div style="margin-top:10px;font-size:10.5px;color:var(--gray);font-style:italic">ⓘ Update from Electoral Roll once published. Contact ARO-Kadugodi (Code 17) for latest data.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <strong>S.M. Krishna Ward — Ward Information Guide</strong> · Data: KGIS · GTFS (BMTC) · Google Earth Engine · TomTom (Aug 2024) · CPCB / KSPCB · GBA records<br>
+    Bengaluru Geospatial Intelligence Programme · Jana Urban Space Foundation · May 2026 · For community use in GBA 2026 election process
+  </div>
+  <div class="stamp">WARD INFORMATION GUIDE</div>
+</div>
+
+</body>
+</html>
